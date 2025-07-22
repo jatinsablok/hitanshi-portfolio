@@ -165,8 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   downloadButton.addEventListener("click", function () {
     const link = document.createElement("a");
-    link.href = "CV.pdf";
-    link.download = "CV.pdf";
+    link.href = "shivani-resume.pdf";
+    link.download = "shivani-resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
