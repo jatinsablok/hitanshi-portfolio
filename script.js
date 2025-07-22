@@ -132,11 +132,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Print functionality
-  const printButton = document.createElement("button");
-  printButton.innerHTML = '<i class="fas fa-print"></i> Print CV';
-  printButton.className = "print-btn";
-  printButton.style.cssText = `
+  // Download functionality
+  const downloadButton = document.createElement("button");
+  downloadButton.innerHTML = '<i class="fas fa-download"></i> Download CV';
+  downloadButton.className = "download-btn";
+  downloadButton.style.cssText = `
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -153,21 +153,26 @@ document.addEventListener("DOMContentLoaded", function () {
         font-weight: 500;
     `;
 
-  printButton.addEventListener("mouseenter", function () {
+  downloadButton.addEventListener("mouseenter", function () {
     this.style.transform = "translateY(-2px)";
     this.style.boxShadow = "0 6px 16px rgba(102, 126, 234, 0.6)";
   });
 
-  printButton.addEventListener("mouseleave", function () {
+  downloadButton.addEventListener("mouseleave", function () {
     this.style.transform = "translateY(0)";
     this.style.boxShadow = "0 4px 12px rgba(102, 126, 234, 0.4)";
   });
 
-  printButton.addEventListener("click", function () {
-    window.print();
+  downloadButton.addEventListener("click", function () {
+    const link = document.createElement("a");
+    link.href = "CV.pdf";
+    link.download = "CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   });
 
-  document.body.appendChild(printButton);
+  document.body.appendChild(downloadButton);
 
   // Add loading animation
   window.addEventListener("load", function () {
